@@ -13,7 +13,7 @@ struct Mitarbeiter {
 };
 
 void datenLaden(vector<Mitarbeiter>& daten) {
-    ifstream file("textfile.txt");
+    ifstream file("../TextFile1.txt", ios::in);
     if (!file) return;
 
     Mitarbeiter m;
@@ -24,10 +24,10 @@ void datenLaden(vector<Mitarbeiter>& daten) {
 }
 
 void datenSpeichern(const vector<Mitarbeiter>& daten) {
-    ofstream file("textfile.txt");
-    for (const auto& m : daten) {
-        file << m.personalnummer << " " << m.vorname << " " << m.nachname << " "
-            << m.geburtsdatum << " " << m.gehalt << "\n";
+    ofstream file("../TextFile1.txt");
+    for (const auto& s : daten) {
+        file << s.personalnummer << " " << s.vorname << " " << s.nachname << " "
+            << s.geburtsdatum << " " << s.gehalt << "\n";
     }
     file.close();
 }
@@ -35,7 +35,7 @@ void datenSpeichern(const vector<Mitarbeiter>& daten) {
 int main() {
     vector<Mitarbeiter> daten;
     datenLaden(daten);
-
+    Mitarbeiter m;
     int wahl;
     do {
         cout << "\n--- Mitarbeiterprogramm ---\n";
@@ -45,23 +45,27 @@ int main() {
         cin >> wahl;
 
         if (wahl == 1) {
-            Mitarbeiter m;
-            cout << "Personalnummer: "; cin >> m.personalnummer;
-            cout << "Vorname: "; cin >> m.vorname;
-            cout << "Nachname: "; cin >> m.nachname;
-            cout << "Geburtsdatum (TT.MM.JJJJ): "; cin >> m.geburtsdatum;
-            cout << "Gehalt: "; cin >> m.gehalt;
-            daten.push_back(m);
+            Mitarbeiter s;
+            cout << "Personalnummer: "; 
+            cin >> s.personalnummer;
+            cout << "Vorname: "; 
+            cin >> s.vorname;
+            cout << "Nachname: "; 
+            cin >> s.nachname;
+            cout << "Geburtsdatum (TT.MM.JJJJ): "; 
+            cin >> s.geburtsdatum;
+            cout << "Gehalt: "; 
+            cin >> s.gehalt;
+            daten.push_back(s);
             datenSpeichern(daten);
         }
         else if (wahl == 2) {
-            for (const auto& m : daten) {
+            for (const auto& m : daten) { 
                 cout << m.personalnummer << ": " << m.vorname << " " << m.nachname
                     << ", " << m.geburtsdatum << ", Gehalt: " << m.gehalt << " EUR\n";
             }
         }
 
     } while (wahl != 0);
-    
     return 0;
 }
