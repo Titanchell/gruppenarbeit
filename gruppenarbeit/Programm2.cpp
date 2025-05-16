@@ -21,6 +21,7 @@ void sallery(Mitarbeiter* m, int countEmployee);
 void salleryHigh(Mitarbeiter* m, int countEmployee);
 void filter(Mitarbeiter* m, int countEmployee);
 void output(Mitarbeiter* m);
+
 int main() {
     int countEmployee = 0;
     int mainDec;
@@ -28,7 +29,7 @@ int main() {
 
     while (true) {
         cout << "Personalchef Programm" << endl;
-        cout<<R"(1. Mitarbeiterliste
+        cout<<R"(                 1. Mitarbeiterliste
                  2. Lohnkosten
                  3. Lohnerhöhung
                  4. Jahressuche
@@ -47,7 +48,7 @@ int main() {
 }
 
 int counter(Mitarbeiter* m) {
-    ifstream datei("Mitarbeiterdaten.txt");
+    ifstream datei("../TextFile1.txt");
     if (!datei.is_open()) {
         cout << "Die Datei kann nicht geöffnet werden!";
         return 0;
@@ -62,7 +63,7 @@ int counter(Mitarbeiter* m) {
     return j;
 }
 void save(Mitarbeiter* m, int countEmployee) {
-    ofstream datei("Mitarbeiter.txt");
+    ofstream datei("../TextFile1.txt");
     if (!datei.is_open()) {
         cout << "Die Datei konnte nicht geöffnet werden!";
         return;
