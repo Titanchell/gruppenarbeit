@@ -27,9 +27,9 @@ void datenLaden(vector<Mitarbeiter>& daten) {
 // Schreibt alle Datensätze aus dem Vektor in die Datei (überschreibt alte Datei)
 void datenSpeichern(const vector<Mitarbeiter>& daten) {
     ofstream file("../TextFile1.txt");
-    for (const auto& s : daten) {
-        file << s.personalnummer << " " << s.vorname << " " << s.nachname << " "
-            << s.geburtsdatum << " " << s.gehalt << "\n";
+    for (const auto& m : daten) {
+        file << m.personalnummer << " " << m.vorname << " " << m.nachname << " "
+            << m.geburtsdatum << " " << m.gehalt << "\n";
     }
     file.close();
 }
@@ -49,13 +49,13 @@ int main() {
 
         if (wahl == 1) {
             // Neuen Datensatz erfassen und speichern
-            Mitarbeiter s;
-            cout << "Personalnummer: "; cin >> s.personalnummer;
-            cout << "Vorname: "; cin >> s.vorname;
-            cout << "Nachname: "; cin >> s.nachname;
-            cout << "Geburtsdatum (TT.MM.JJJJ): "; cin >> s.geburtsdatum;
-            cout << "Gehalt: "; cin >> s.gehalt;
-            daten.push_back(s);
+            Mitarbeiter m;
+            cout << "Personalnummer: "; cin >> m.personalnummer;
+            cout << "Vorname: "; cin >> m.vorname;
+            cout << "Nachname: "; cin >> m.nachname;
+            cout << "Geburtsdatum (TT.MM.JJJJ): "; cin >> m.geburtsdatum;
+            cout << "Gehalt: "; cin >> m.gehalt;
+            daten.push_back(m);
             datenSpeichern(daten);
         }
         else if (wahl == 2) {
